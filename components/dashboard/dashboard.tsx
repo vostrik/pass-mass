@@ -37,7 +37,7 @@ interface IDashboardProps {
 const getEffectiveCssProperty = (cssVarFunc: string) => {
   const matched = cssVarFunc.match(/var\((.*)\)/)
   if (matched === null) return ''
-  return matched[0]
+  return matched[1]
 }
 
 export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) => {
