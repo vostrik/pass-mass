@@ -33,6 +33,11 @@ interface IDashboardProps {
   metricUnit: string
 }
 
+const getEffectiveCssProperty = (cssVarFunc: string) => {
+  const [,cssPropertyName] = cssVarFunc.match(/var\((.*)\)/) || []
+  return cssPropertyName
+}
+
 export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) => {
   const divEl = useRef<HTMLDivElement | null>(null)
   
@@ -44,10 +49,8 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
   useEffect(() => {
     if (divEl.current) {
       const style = getComputedStyle(divEl.current)
-        const [,primaryColor] = tokens.color.primary.match(/var\((.*)\)/) || []
-        const [,backgroundColor] = tokens.color.background.match(/var\((.*)\)/) || []
-        setPrimaryColor(style.getPropertyValue(primaryColor))
-        setBackgroundColor(style.getPropertyValue(backgroundColor))
+      setPrimaryColor(style.getPropertyValue(getEffectiveCssProperty(tokens.color.primary)))
+      setBackgroundColor(style.getPropertyValue(getEffectiveCssProperty(tokens.color.background)))
     }
   }, []);
 

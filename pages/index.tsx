@@ -9,7 +9,7 @@ import { Category } from '../components/category/category'
 import { TDataSet } from '../types/dataset'
 import { TCategory } from '../types/category'
 
-import { footerStyle } from './app.css'
+import { footerStyle } from '../styles/app.css'
 
 export default function Home() {
   const dataset: TDataSet = [
