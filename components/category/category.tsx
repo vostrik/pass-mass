@@ -9,6 +9,7 @@ interface ICategorieProps {
 
 export const Category = ({ categories = [], addCategory}: ICategorieProps) => {
   const foo = ''
+  const baz = 2
   return (
     <nav>
       <ul>
