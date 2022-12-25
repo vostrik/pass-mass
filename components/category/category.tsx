@@ -1,15 +1,13 @@
-import { MouseEventHandler } from "react"
+import { MouseEventHandler } from 'react'
 
 import { TCategory } from '../../types/category'
 
 interface ICategorieProps {
-  categories: TCategory[],
+  categories: TCategory[]
   addCategory: MouseEventHandler
 }
 
-export const Category = ({ categories = [], addCategory}: ICategorieProps) => {
-  const foo = ''
-  const baz = 2
+export const Category = ({ categories = [], addCategory }: ICategorieProps) => {
   return (
     <nav>
       <ul>

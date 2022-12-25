@@ -7,7 +7,7 @@ import {
   Title,
   Tooltip,
   Filler,
-  Legend,
+  Legend
 } from 'chart.js'
 
 export const initChartJS = () => {

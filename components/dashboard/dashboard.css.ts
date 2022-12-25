@@ -5,5 +5,5 @@ import { tokens } from '../../design-system'
 export const gradientText = style({
   backgroundClip: 'text',
   backgroundImage: tokens.color.gradient,
-  color: 'transparent',
+  color: 'transparent'
 })

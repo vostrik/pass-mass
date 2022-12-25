@@ -6,7 +6,7 @@ import { TDataSet } from '../../types/dataset'
 import { TCategory } from '../../types/category'
 
 interface ITableProps {
-  dataset: TDataSet,
+  dataset: TDataSet
   category: TCategory
 }
 

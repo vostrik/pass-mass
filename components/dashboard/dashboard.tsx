@@ -29,31 +29,32 @@ const options = {
 }
 
 interface IDashboardProps {
-  dataset: TDataSet,
-  metricName: string,
+  dataset: TDataSet
+  metricName: string
   metricUnit: string
 }
 
 const getEffectiveCssProperty = (cssVarFunc: string) => {
-  const [,cssPropertyName] = cssVarFunc.match(/var\((.*)\)/) || []
-  return cssPropertyName
+  const matched = cssVarFunc.match(/var\((.*)\)/)
+  if (matched === null) return ''
+  return matched[0]
 }
 
 export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) => {
   const divEl = useRef<HTMLDivElement | null>(null)
-  
+
   const [primaryColor, setPrimaryColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
 
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (divEl.current) {
-      const style = getComputedStyle(divEl.current)
-      setPrimaryColor(style.getPropertyValue(getEffectiveCssProperty(tokens.color.primary)))
-      setBackgroundColor(style.getPropertyValue(getEffectiveCssProperty(tokens.color.background)))
-    }
-  }, []);
+    if (divEl.current === null) return
+
+    const style = getComputedStyle(divEl.current)
+    setPrimaryColor(style.getPropertyValue(getEffectiveCssProperty(tokens.color.primary)))
+    setBackgroundColor(style.getPropertyValue(getEffectiveCssProperty(tokens.color.background)))
+  }, [])
 
   const data = {
     labels: dataset.map(x => x.date),
@@ -62,7 +63,7 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
         fill: true,
         data: dataset.map(x => x.value),
         borderColor: primaryColor,
-        backgroundColor: backgroundColor,
+        backgroundColor,
         borderWidth: 2
       }
     ]
@@ -70,7 +71,7 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
 
   return (
     <div ref={divEl}>
-      {dataset.length && (
+      {dataset.length > 0 && (
         <h1>
           {t('Your')}&nbsp;
           <span className={gradientText}>{metricName}</span>

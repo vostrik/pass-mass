@@ -16,15 +16,15 @@ interface IStaticProps {
   locale: string
 }
 
-export async function getStaticProps({ locale }: IStaticProps) {
+export async function getStaticProps ({ locale }: IStaticProps) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
+      ...(await serverSideTranslations(locale, ['common']))
+    }
   }
 }
 
-export default function Home() {
+export default function Home () {
   const dataset: TDataSet = [
     { id: '1', date: 'January', value: 8 },
     { id: '2', date: 'February', value: 6 },
@@ -32,10 +32,10 @@ export default function Home() {
     { id: '4', date: 'April', value: 6 },
     { id: '5', date: 'May', value: 8 },
     { id: '6', date: 'June', value: 7 },
-    { id: '7', date: 'July', value: 10 },
+    { id: '7', date: 'July', value: 10 }
   ]
 
-  const categories: Array<TCategory> = [
+  const categories: TCategory[] = [
     {
       id: '1',
       name: 'Weight',

@@ -1,3 +1,3 @@
 export const Logo = () => {
-    return <>PassMass</>
+  return <>PassMass</>
 }

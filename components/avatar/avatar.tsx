@@ -1,3 +1,3 @@
 export const Avatar = () => {
-    return <>Avatar</>
+  return <>Avatar</>
 }
