@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { tableWrapper } from './table.css'
 
 import { TDataSet } from '../../types/dataset'
@@ -9,12 +11,14 @@ interface ITableProps {
 }
 
 export const Table = ({ dataset = [], category }: ITableProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={tableWrapper}>
       <table>
         <thead>
           <tr>
-            <th>Date</th>
+            <th>{t('Date')}</th>
             <th>{category.name}, {category.units}</th>
           </tr>
         </thead>

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Dashboard } from '../components/dashboard/dashboard'
 import { Table } from '../components/table/table'
@@ -10,6 +11,18 @@ import { TDataSet } from '../types/dataset'
 import { TCategory } from '../types/category'
 
 import { footerStyle } from '../styles/app.css'
+
+interface IStaticProps {
+  locale: string
+}
+
+export async function getStaticProps({ locale }: IStaticProps) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  }
+}
 
 export default function Home() {
   const dataset: TDataSet = [

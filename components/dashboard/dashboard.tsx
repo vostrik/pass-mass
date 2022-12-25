@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
+import { useTranslation } from 'next-i18next'
 
 import { tokens } from '../../design-system'
 import { TDataSet } from '../../types/dataset'
@@ -44,7 +45,7 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
   const [primaryColor, setPrimaryColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
 
-  console.log(primaryColor, backgroundColor)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (divEl.current) {
@@ -71,9 +72,9 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
     <div ref={divEl}>
       {dataset.length && (
         <h1>
-          Your&nbsp;
+          {t('Your')}&nbsp;
           <span className={gradientText}>{metricName}</span>
-          &nbsp;is&nbsp;
+          &nbsp;{t('is')}&nbsp;
           <input name="value" defaultValue={dataset.at(-1)?.value} />
           &nbsp;{metricUnit}
         </h1>
