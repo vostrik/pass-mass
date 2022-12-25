@@ -39,6 +39,8 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
   const [primaryColor, setPrimaryColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
 
+  console.log(primaryColor, backgroundColor)
+
   useEffect(() => {
     if (divEl.current) {
       const style = getComputedStyle(divEl.current)
@@ -69,7 +71,7 @@ export const Dashboard = ({ dataset, metricName, metricUnit }: IDashboardProps) 
           Your&nbsp;
           <span className={gradientText}>{metricName}</span>
           &nbsp;is&nbsp;
-          <input name="value" value={dataset.at(-1)?.value} />
+          <input name="value" defaultValue={dataset.at(-1)?.value} />
           &nbsp;{metricUnit}
         </h1>
       )}
