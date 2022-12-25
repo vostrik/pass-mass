@@ -1,0 +1,24 @@
+# EXAMPLE USAGE
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+
+pre-push:
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: npm audit
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{jsx?,tsx?}"
+      run: npm run lint {staged_files}
+    test:
+      run: npm run test
+    build:
+      run: npm run build
+#   scripts:
+#     "hello.js":
+#       runner: node
+#     "any.go":
+#       runner: go run
