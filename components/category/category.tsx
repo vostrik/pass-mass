@@ -12,7 +12,7 @@ export const Category = ({ categories = [], addCategory}: ICategorieProps) => {
     <nav>
       <ul>
         {categories.map(category => (
-          <li>
+          <li key={category.id}>
             <a href="#">{category.name}</a>&nbsp;
             <a href="#">x</a>
           </li>
