@@ -5,20 +5,18 @@
 pre-push:
   commands:
     packages-audit:
-      tags: frontend security
       run: npm audit
     test:
       run: npm run test
     build:
       run: npm run build
+commit-msg:
+  commands:
+    commit-lint:
+      run: commitlint --edit 
 pre-commit:
   parallel: true
   commands:
     eslint:
       glob: "*.{js,ts,jsx,tsx}"
       run: npm run lint
-#   scripts:
-#     "hello.js":
-#       runner: node
-#     "any.go":
-#       runner: go run
